@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>白名单管理DApp</title>
+    <style>
+        body{background:#001219;color:#e9d8a6;padding:30px}
+        .dapp{max-width:800px;margin:0 auto}
+        .input-group{margin:15px 0}
+        input{width:100%;padding:12px;border-radius:8px;border:none;background:#005f73;color:white}
+        .btn{padding:12px 25px;background:#94d2bd;border:none;border-radius:8px;cursor:pointer;margin-top:10px}
+        .list{margin-top:20px;padding:15px;background:#023e8a;border-radius:8px}
+    </style>
+</head>
+<body>
+    <div class="dapp">
+        <h2>NFT 白名单管理工具</h2>
+        <div class="input-group">
+            <input id="wallet" placeholder="输入钱包地址">
+            <button class="btn" onclick="addWhitelist()">添加到白名单</button>
+            <button class="btn" onclick="checkWhitelist()">检查资格</button>
+        </div>
+        <div class="list" id="status"></div>
+    </div>
+    <script>
+        const list = new Set();
+        function addWhitelist() {
+            const addr = document.getElementById('wallet').value;
+            list.add(addr);
+            document.getElementById('status').innerText = `已添加：${addr}`;
+        }
+        function checkWhitelist() {
+            const addr = document.getElementById('wallet').value;
+            const res = list.has(addr) ? "✅ 在白名单内" : "❌ 不在白名单";
+            document.getElementById('status').innerText = res;
+        }
+    </script>
+</body>
+</html>
