@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DAO提案投票系统</title>
+    <style>
+        .app{max-width:900px;margin:30px auto;padding:25px}
+        .proposal{background:#ffd6a5;padding:20px;border-radius:12px;margin-bottom:15px}
+        .vote-btn{padding:10px 22px;margin:5px;border:none;border-radius:8px;cursor:pointer}
+        .for{background:#06d6a0}
+        .against{background:#ef4765}
+        .progress{height:10px;background:#eee;border-radius:5px;margin:10px 0}
+    </style>
+</head>
+<body>
+    <div class="app">
+        <h2>DAO 治理投票工具</h2>
+        <div class="proposal">
+            <h3>提案 #1：增加社区金库资金</h3>
+            <p>内容：将500枚Token转入社区发展基金</p>
+            <button class="vote-btn for" onclick="vote(true)">支持</button>
+            <button class="vote-btn against" onclick="vote(false)">反对</button>
+            <div class="progress"></div>
+            <p id="voteResult">支持：62% | 反对：38%</p>
+        </div>
+    </div>
+    <script>
+        function vote(isSupport) {
+            const forP = Math.floor(Math.random()*40+50);
+            const agP = 100 - forP;
+            document.getElementById("voteResult").innerText = `支持：${forP}% | 反对：${agP}%`;
+            alert("投票已上链确认");
+        }
+    </script>
+</body>
+</html>
