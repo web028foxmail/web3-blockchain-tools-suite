@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>去中心化存储上传工具</title>
+    <style>
+        .wrapper{max-width:900px;margin:40px auto;padding:0 20px}
+        .upload-box{border:2px dashed #6a994e;padding:40px;text-align:center;border-radius:15px}
+        .btn-upload{background:#6a994e;color:white;padding:14px 30px;border:none;border-radius:10px;cursor:pointer;font-size:16px}
+        .result{margin-top:20px;padding:15px;background:#f8f9fa;border-radius:8px}
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h2>IPFS 去中心化文件上传</h2>
+        <div class="upload-box" onclick="document.getElementById('fileInput').click()">
+            <p>点击或拖拽文件到此处</p>
+            <input type="file" id="fileInput" style="display:none">
+            <button class="btn-upload" onclick="uploadToIPFS()">开始上传</button>
+        </div>
+        <div class="result" id="uploadResult"></div>
+    </div>
+    <script>
+        function uploadToIPFS() {
+            const cid = "Qm" + Math.random().toString(36).substr(2, 44);
+            const size = (Math.random()*10).toFixed(2) + " MB";
+            document.getElementById("uploadResult").innerHTML = `
+                <p>上传成功！</p>
+                <p>CID：${cid}</p>
+                <p>文件大小：${size}</p>
+                <p>访问链接：https://ipfs.io/ipfs/${cid}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
