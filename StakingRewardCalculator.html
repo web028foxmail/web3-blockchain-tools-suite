@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>质押收益计算器</title>
+    <style>
+        .calc{max-width:700px;margin:50px auto;background:#fff;padding:30px;border-radius:15px;box-shadow:0 0 15px rgba(0,0,0,0.1)}
+        input,select{width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:8px}
+        .calc-btn{background:#390099;color:white;padding:14px;border:none;border-radius:8px;width:100%;cursor:pointer}
+        .result{margin-top:20px;padding:15px;background:#f0eaff;border-radius:8px}
+    </style>
+</head>
+<body>
+    <div class="calc">
+        <h2>链上质押收益计算器</h2>
+        <input type="number" id="amount" placeholder="质押数量">
+        <select id="period">
+            <option value="30">30天</option>
+            <option value="90">90天</option>
+            <option value="365">365天</option>
+        </select>
+        <button class="calc-btn" onclick="calculateReward()">计算收益</button>
+        <div class="result" id="rewardResult"></div>
+    </div>
+    <script>
+        function calculateReward() {
+            const amt = parseFloat(document.getElementById('amount').value);
+            const day = parseInt(document.getElementById('period').value);
+            const apy = (Math.random()*15+5).toFixed(2);
+            const reward = (amt * apy / 365 * day).toFixed(4);
+            document.getElementById('rewardResult').innerHTML = `
+                <p>年化收益率：${apy}%</p>
+                <p>预期收益：${reward} Token</p>
+                <p>质押天数：${day} 天</p>
+            `;
+        }
+    </script>
+</body>
+</html>
