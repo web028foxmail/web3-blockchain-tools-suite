@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web3钱包连接器</title>
+    <style>
+        .container{max-width:700px;margin:50px auto;text-align:center;padding:20px}
+        .connect-btn{padding:15px 35px;background:#165DFF;color:white;border:none;border-radius:12px;font-size:18px;cursor:pointer}
+        .profile{margin-top:30px;padding:25px;background:#f8f9fc;border-radius:15px}
+        .address{font-weight:bold;color:#333;font-size:18px}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Web3 钱包连接工具</h2>
+        <button class="connect-btn" onclick="connectWallet()">连接 MetaMask</button>
+        <div class="profile" id="walletProfile"></div>
+    </div>
+    <script>
+        async function connectWallet() {
+            const mockAddress = "0x" + Math.random().toString(16).substr(2, 40);
+            const balance = (Math.random()*5+0.1).toFixed(4);
+            document.getElementById("walletProfile").innerHTML = `
+                <p class="address">已连接：${mockAddress}</p>
+                <p>BNB 余额：${balance}</p>
+                <p>链ID：56 (BSC)</p>
+            `;
+        }
+    </script>
+</body>
+</html>
