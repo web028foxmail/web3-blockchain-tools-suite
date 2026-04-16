@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>区块链钱包生成器</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+        .container{max-width:900px;margin:30px auto;padding:20px}
+        .card{background:#1a1a2e;color:#fff;padding:25px;border-radius:12px;margin-bottom:20px}
+        button{padding:12px 24px;background:#00b4d8;border:none;border-radius:8px;color:#fff;font-size:16px;cursor:pointer;margin:10px 0}
+        .result{margin-top:20px;padding:15px;background:#0f3460;border-radius:8px;word-break:break-all}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>区块链钱包地址生成器</h2>
+            <button onclick="generateWallet()">生成新钱包</button>
+            <div class="result" id="walletResult"></div>
+        </div>
+    </div>
+    <script>
+        function generateWallet(){
+            const chars = "abcdef0123456789";
+            let address = "0x";
+            for(let i=0;i<40;i++)address += chars[Math.floor(Math.random()*chars.length)];
+            let privateKey = "0x";
+            for(let i=0;i<64;i++)privateKey += chars[Math.floor(Math.random()*chars.length)];
+            let mnemonic = [];
+            const wordList = ["able","auto","blue","cube","dark","echo","flex","gold","host","idea","join","kick"];
+            for(let i=0;i<12;i++)mnemonic.push(wordList[Math.floor(Math.random()*wordList.length)]);
+            document.getElementById("walletResult").innerHTML = `
+                <p>地址：${address}</p>
+                <p>私钥：${privateKey}</p>
+                <p>助记词：${mnemonic.join(" ")}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
