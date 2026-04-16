@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NFT元数据查看器</title>
+    <style>
+        body{background:#f5f5f5;padding:30px}
+        .app{max-width:1000px;margin:0 auto;background:white;padding:30px;border-radius:15px;box-shadow:0 0 10px rgba(0,0,0,0.1)}
+        input{width:100%;padding:12px;margin:10px 0;border:1px solid #ddd;border-radius:8px}
+        .btn{background:#7b2cbf;color:white;padding:12px 25px;border:none;border-radius:8px;cursor:pointer}
+        .nft-card{margin-top:20px;padding:20px;border:1px solid #ddd;border-radius:10px}
+    </style>
+</head>
+<body>
+    <div class="app">
+        <h2>NFT 元数据查看工具</h2>
+        <input type="text" id="contract" placeholder="输入NFT合约地址">
+        <input type="text" id="tokenId" placeholder="输入TokenID">
+        <button class="btn" onclick="loadNFTMetadata()">查询元数据</button>
+        <div id="nftDisplay" class="nft-card"></div>
+    </div>
+    <script>
+        function loadNFTMetadata() {
+            const contract = document.getElementById('contract').value;
+            const tokenId = document.getElementById('tokenId').value;
+            const mockData = {
+                name: `NFT #${tokenId}`,
+                description: "去中心化数字收藏品",
+                image: "https://placehold.co/400x400/3a0ca3/white?text=NFT",
+                attributes: [
+                    {trait_type: "Rarity", value: "Legendary"},
+                    {trait_type: "Level", value: Math.floor(Math.random()*100)}
+                ]
+            };
+            document.getElementById('nftDisplay').innerHTML = `
+                <h3>${mockData.name}</h3>
+                <p>${mockData.description}</p>
+                <img src="${mockData.image}" width="200">
+                <p>稀有度：${mockData.attributes[0].value}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
