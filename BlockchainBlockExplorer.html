@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>区块链区块浏览器</title>
+    <style>
+        body{font-family:system-ui;background:#0d1b2a;color:#e0e1dd}
+        .container{max-width:1100px;margin:30px auto;padding:20px}
+        .search{padding:12px;width:300px;border-radius:8px;border:none;margin-right:10px}
+        .search-btn{padding:12px 20px;background:#415a77;color:white;border:none;border-radius:8px;cursor:pointer}
+        .block-card{background:#1b263b;padding:20px;border-radius:10px;margin-top:20px}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>区块链区块查询工具</h2>
+        <input class="search" id="blockNum" placeholder="输入区块高度">
+        <button class="search-btn" onclick="getBlockInfo()">查询区块</button>
+        <div id="blockInfo" class="block-card"></div>
+    </div>
+    <script>
+        function getBlockInfo() {
+            const num = document.getElementById('blockNum').value;
+            const hash = "0x" + Math.random().toString(16).substr(2, 64);
+            const txs = Math.floor(Math.random()*300+50);
+            const time = new Date().toLocaleString();
+            document.getElementById('blockInfo').innerHTML = `
+                <h3>区块 #${num}</h3>
+                <p>区块哈希：${hash}</p>
+                <p>交易数量：${txs} 笔</p>
+                <p>出块时间：${time}</p>
+                <p>难度：${Math.floor(Math.random()*1000000000)}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
